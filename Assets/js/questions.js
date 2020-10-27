@@ -100,64 +100,64 @@ document.getElementById("startQuiz").addEventListener('click', function () {
   nextQuestion();
 })
 
-// Page number of questions
-var pageCount = 0;
+// // Page number of questions
+// var pageCount = 0;
 
-// Timer functionality
-function clockTimer() {
-  var countdown = setInterval(function () {
-    timeRemaining--;
-    document.getElementById("timeRemaining").innerText = timeRemaining;
+// // Timer functionality
+// function clockTimer() {
+//   var countdown = setInterval(function () {
+//     timeRemaining--;
+//     document.getElementById("timeRemaining").innerText = timeRemaining;
 
-    if (timeRemaining <= 0 || pageCount == questions.length) {
-      clearInterval(countdown);
-    }
-  }, 1000);
-}
+//     if (timeRemaining <= 0 || pageCount == questions.length) {
+//       clearInterval(countdown);
+//     }
+//   }, 1000);
+// }
 
-// Answer button functionality
-class Choice {
-  constructor(choiceNumber) {
-    choiceNumber.addEventListener('click', function () {
-      if (correctAnswers.indexOf(choiceNumber.innerText) !== -1) {
-        for (i = 0; i < questions[pageCount].answers.length; i++) {
-          document.getElementById('main').removeChild(document.getElementById('answer' + i));
-        }
-        pageCount++;
-        nextQuestion();
-      } else {
-        choiceNumber.style.backgroundColor = 'red';
-        choiceNumber.style.borderColor = 'red';
-        timeRemaining -= 5;
-      }
-    })
-  }
-}
+// // Answer button functionality
+// class Choice {
+//   constructor(choiceNumber) {
+//     choiceNumber.addEventListener('click', function () {
+//       if (correctAnswers.indexOf(choiceNumber.innerText) !== -1) {
+//         for (i = 0; i < questions[pageCount].answers.length; i++) {
+//           document.getElementById('main').removeChild(document.getElementById('answer' + i));
+//         }
+//         pageCount++;
+//         nextQuestion();
+//       } else {
+//         choiceNumber.style.backgroundColor = 'red';
+//         choiceNumber.style.borderColor = 'red';
+//         timeRemaining -= 5;
+//       }
+//     })
+//   }
+// }
 
-// QUIZ POPULATION //
-function nextQuestion() {
+// // QUIZ POPULATION //
+// function nextQuestion() {
 
-  // Before last answer is selected
-  if (pageCount < questions.length) {
-    // Write question to main card
-    document.querySelector("#question").textContent = questions[pageCount].question;
+//   // Before last answer is selected
+//   if (pageCount < questions.length) {
+//     // Write question to main card
+//     document.querySelector("#question").textContent = questions[pageCount].question;
 
-    // Write answers to main card
-    for (i = 0; i < questions[pageCount].answers.length; i++) {
-      var answerBtn = document.createElement('button');
-      answerBtn.setAttribute('class', 'btn btn-secondary');
-      answerBtn.setAttribute('id', 'answer' + i);
-      answerBtn.innerText = questions[pageCount].answers[i];
-      document.getElementById('main').appendChild(answerBtn);
-      new Choice(document.getElementById('answer' + i));
-    }
-  }
+//     // Write answers to main card
+//     for (i = 0; i < questions[pageCount].answers.length; i++) {
+//       var answerBtn = document.createElement('button');
+//       answerBtn.setAttribute('class', 'btn btn-secondary');
+//       answerBtn.setAttribute('id', 'answer' + i);
+//       answerBtn.innerText = questions[pageCount].answers[i];
+//       document.getElementById('main').appendChild(answerBtn);
+//       new Choice(document.getElementById('answer' + i));
+//     }
+//   }
 
-  // After last answer chosen
-  if (pageCount == questions.length) {
-    endingCard();
-  }
-}
+//   // After last answer chosen
+//   if (pageCount == questions.length) {
+//     endingCard();
+//   }
+// }
 
 // document.querySelector("quizQuestions").innerText = myQuestions[0].question;
 
